@@ -10,41 +10,60 @@ public class MusicGameCon extends MP3Player {
 	Scanner sc = new Scanner(System.in);
 	image im = new image();
 	Random ran = new Random();
+	PathDAO pathdao = new PathDAO();
 
-	
-	public void playTest(String path,int i) {
-		play(path);
-		timeDelay(i*5);
-		stop();
+	public void playTest() {
+
+		ArrayList<Integer> ranSong = ranNum(pathdao.songData().size());
+		int sum = 0;
+		for (int j = 0; j < 5; j++) {
+			int score = 60;
+			for (int i = 1; i <= 3; i++) {
+				im.printImage();
+				play(pathdao.songData().get(ranSong.get(j)).getPath());
+				timeDelay(i * 5);
+				stop();
+
+				score -= 20;
+				System.out.print("정답(한글로작성)" + score + "점 : ");
+				if (pathdao.songData().get(ranSong.get(j)).getName().equals(sc.next())) {
+					System.out.println("정답입니다.");
+					timeDelay(2);
+					break;
+				} else {
+					System.out.println("오답입니다.");
+					timeDelay(2);
+				}
+
+			}
+			sum += score;
+			System.out.println(sum);
+		}
+
 	}
-	
+
 	public ArrayList<Integer> ranNum(int max) {
-		ArrayList<Integer> result = new ArrayList<Integer>();	
-		
-		for(int i=0;i<max;i++) {
+		ArrayList<Integer> result = new ArrayList<Integer>();
+
+		for (int i = 0; i < max; i++) {
 			int randomNumber = ran.nextInt(max);
 
-			while(result.contains(randomNumber)) {
-                randomNumber = ran.nextInt(max);
-            }
-            result.add(randomNumber);
+			while (result.contains(randomNumber)) {
+				randomNumber = ran.nextInt(max);
+			}
+			result.add(randomNumber);
 		}
-		
-		
-		
+
 		return result;
 	}
-	
+
 	public void timeDelay(int i) {
 		try {
 			Thread.sleep(i * 1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	
-	
 
 }
