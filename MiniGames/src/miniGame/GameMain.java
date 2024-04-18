@@ -9,9 +9,7 @@ public class GameMain {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		Random ran = new Random();
-//		image im = new image();
 		DBDAO dao = new DBDAO();
-//		PathDAO pathdao = new PathDAO();
 		DBDTO user = null;
 
 		while (true) {
@@ -24,7 +22,6 @@ public class GameMain {
 				String pw = sc.next();
 
 				user = dao.loginUser(id, pw);
-				System.out.println(user.getName());
 
 				if (user.getName().equals("")) {
 					System.out.println("로그인 실패");
@@ -62,10 +59,11 @@ public class GameMain {
 
 		if (num == 1) {
 			MusicGameCon mp3 = new MusicGameCon();
-			mp3.playTest();
+			mp3.playTest(user.getId());
 
 		}
 
+<<<<<<< HEAD
 	// 넌센스 그림퀴즈 
 		 if (num==2) {
 			 
@@ -73,6 +71,9 @@ public class GameMain {
 			 
 			 
 		 }/*아현*/	 
+=======
+
+>>>>>>> branch 'master' of https://github.com/2024-SMHRD-SW-DataDegign-1/jaekwanrepo2.git
 	}
 
 }
