@@ -46,6 +46,7 @@ public class DBDAO {
 	public int insertUser(String id, String pw, String name) {
 		int row = 0;
 		String sql = "INSERT INTO DATAMEMBER VALUES(?,?,?)";
+		String sql2 = "INSERT INTO RANK VALUES(?,0,0,0,0)";
 
 		try {
 			conn();
@@ -53,8 +54,12 @@ public class DBDAO {
 			psmt.setString(1, id);
 			psmt.setString(2, pw);
 			psmt.setString(3, name);
-
 			row = psmt.executeUpdate();
+			
+			psmt = conn.prepareStatement(sql2);
+			psmt.setString(1, id);
+			row = psmt.executeUpdate();
+			
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
