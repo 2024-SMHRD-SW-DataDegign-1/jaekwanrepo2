@@ -42,7 +42,7 @@ public class MusicGameCon extends MP3Player {
 		}
 		
 		
-		rank(1,id,sum);
+		rank.ranksys(1,id,sum);
 
 	}
 
@@ -70,36 +70,8 @@ public class MusicGameCon extends MP3Player {
 
 	}
 	
-	public void rank(int num,String id,int sum) {
-		RankDAO rank = new RankDAO();
-		//랭크 입력
-		rank.rank(num, id, sum);
-		
-		//랭크 출력
-		ArrayList<RankDTO> result = rank.searchRank(num);
-		if (num == 1) {
-			for (RankDTO i : result) {
-				System.out.println(i.getId() + "\t" + i.getMusicScore());
-			}
-		}
-		else if (num == 2) {
-			for (RankDTO i : result) {
-				System.out.println(i.getId() + "\t" + i.getCodeScore());
-			}
-		}
-		else if (num == 3) {
-			for (RankDTO i : result) {
-				System.out.println(i.getId() + "\t" + i.getImageScore());
-			}
-		}
-		else if (num == 4) {
-			for (RankDTO i : result) {
-				System.out.println(i.getId() + "\t" + i.getWordScore());
-			}
-		}
-		
-		
-	}
+	
+	
 	
 
 }
