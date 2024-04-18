@@ -82,6 +82,13 @@ public class GameMain {
 			}
 		}
 
+	// 넌센스 그림퀴즈 
+		 if (num==2) {
+			 
+	
+			 
+			 
+		 }/*아현*/	 
 	}
 
 }
