@@ -1,0 +1,7 @@
+int num1 = 10;		
+Float num2 = 7f;
+System.out.println(num1 / num2); 
+System.out.println(num1 % num2);
+int num3 = 10;
+String num4 = "7";
+System.out.println(num3 + num4);

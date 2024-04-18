@@ -1,0 +1,27 @@
+int[][] ar = new int[5][5];
+int num2 = 21;
+for(int j = 0 ; j <= 4 ; j++) {
+    if(j%2==0) {
+       for(int i = 0 ; i < 5 ; i++) {
+           ar[j][i]= num2 ++;
+           }
+      }else {
+       for(int i = 4; i >= 0; i--) {
+            ar[j][i] = num2 ++;
+           }
+       }
+}
+for(int i = 0 ; i < 5 ; i++) {
+    for(int j = 0 ; j < 5 ; j++) {
+        System.out.print(ar[j][i] + " ");
+        }
+   System.out.println();
+}
+
+*
+=========== 실행 결과 ==========
+21 22 23 24 25 
+30 29 28 27 26 
+31 32 33 34 35 
+40 39 38 37 36 
+41 42 43 44 45 

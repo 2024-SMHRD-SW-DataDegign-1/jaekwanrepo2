@@ -1,0 +1,5 @@
+int num = 4;					
+final int num2 = 3;
+num = 14
+boolean bool = true;
+bool = false;

@@ -1,0 +1,5 @@
+float num5 = 3.14f;
+int num7 = 3;
+string right = "blue";
+int a, b;
+double x = 10;

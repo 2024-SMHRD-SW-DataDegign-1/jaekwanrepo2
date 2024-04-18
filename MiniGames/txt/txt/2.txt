@@ -1,0 +1,4 @@
+char c1 = 65;
+String str = '안녕하세요';
+byte num1 = (byte) 200;
+double num3 = 3.14;
