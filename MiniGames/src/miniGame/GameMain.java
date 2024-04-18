@@ -66,7 +66,7 @@ public class GameMain {
 		}else if(num == 2) {
 			WrongCodeMain wcm = new WrongCodeMain();
 			wcm.wrongCodeMain(user);
-		}else if(num == 3) {
+		}else if(num == 3) {/*아현 : 넌센스 그림 맞추기 게임*/
 			
 		}else if(num == 4) {
 			
