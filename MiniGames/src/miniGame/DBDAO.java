@@ -70,11 +70,11 @@ public class DBDAO {
 	// 로그인
 	public DBDTO loginUser(String id, String pw) {
 
-		String sql = "select name from datamember where id = ? and pw = ?";
+		String sql = "select * from datamember where id = ? and pw = ?";
 		ResultSet rs = null;
 		DBDTO user = null;
 		
-		String name = "";
+		//String name = "";
 
 		try {
 			conn();
@@ -85,7 +85,7 @@ public class DBDAO {
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				user = new DBDTO(id, pw, name);
+				user = new DBDTO(id, pw, rs.getString(2));
 			}
 
 		} catch (SQLException e) {
