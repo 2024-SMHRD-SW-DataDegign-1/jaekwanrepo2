@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+
+
 public class GameMain {
 
 	public static void main(String[] args) {
@@ -54,14 +56,25 @@ public class GameMain {
 
 //		String comPath = ".\\player\\";
 
-		System.out.println("[1]MusicGame");
+		System.out.println("[1]노래맞추기 [2]틀린문법찾기 [3]그림맞추기 [4]초성퀴즈");
 		int num = sc.nextInt();
 
 		if (num == 1) {
 			MusicGameCon mp3 = new MusicGameCon();
 			mp3.playTest(user.getId());
 
+		}else if(num == 2) {
+			WrongCodeMain wcm = new WrongCodeMain();
+			wcm.wrongCodeMain(user);
+		}else if(num == 3) {
+			
+		}else if(num == 4) {
+			
+		}else if(num == 5) {
+			
 		}
+
+
 
 
 	}
