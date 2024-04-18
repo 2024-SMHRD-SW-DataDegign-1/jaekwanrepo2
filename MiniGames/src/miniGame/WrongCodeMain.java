@@ -3,6 +3,7 @@ package miniGame;
 import miniGame.DBDTO;
 
 public class WrongCodeMain extends WrongCodeRun{
+	RankDAO rank = new RankDAO();
 	
 	
 
@@ -67,6 +68,7 @@ public class WrongCodeMain extends WrongCodeRun{
 		}
 		wcDAO.updateUser(id, salary);
 		wcDAO.dbClose();
+		rank.ranksys(2,id,salary);
 
 	}
 
