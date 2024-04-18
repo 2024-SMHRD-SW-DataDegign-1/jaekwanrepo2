@@ -44,7 +44,7 @@ public class PathDAO {
 
 	}
 
-	// 전체 회원 조회
+	// 노래 정보 불러오기
 	public ArrayList<PathDTO> songData() {
 		String sql = "select * from song";
 		ResultSet rs = null; 

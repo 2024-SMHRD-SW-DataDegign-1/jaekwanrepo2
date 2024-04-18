@@ -9,9 +9,7 @@ public class GameMain {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		Random ran = new Random();
-//		image im = new image();
 		DBDAO dao = new DBDAO();
-//		PathDAO pathdao = new PathDAO();
 		DBDTO user = null;
 
 		while (true) {
@@ -24,7 +22,6 @@ public class GameMain {
 				String pw = sc.next();
 
 				user = dao.loginUser(id, pw);
-				System.out.println(user.getName());
 
 				if (user.getName().equals("")) {
 					System.out.println("로그인 실패");
@@ -62,9 +59,10 @@ public class GameMain {
 
 		if (num == 1) {
 			MusicGameCon mp3 = new MusicGameCon();
-			mp3.playTest();
+			mp3.playTest(user.getId());
 
 		}
+
 
 	}
 

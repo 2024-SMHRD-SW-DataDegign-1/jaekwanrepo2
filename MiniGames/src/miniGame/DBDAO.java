@@ -83,9 +83,8 @@ public class DBDAO {
 			psmt.setString(2, pw);
 
 			rs = psmt.executeQuery();
-
 			if (rs.next()) {
-				user = new DBDTO(id, pw, rs.getString(2));
+				user = new DBDTO(id, pw, rs.getString(3));
 			}
 
 		} catch (SQLException e) {
