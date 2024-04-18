@@ -22,7 +22,7 @@ public class NeonClass {
 		
 		
 		
-		for (int i = 0; i < 16; i++) {
+		for (int i = 0; i < 3; i++) {
 			int score = 30;
 			System.out.println("문제 " + (i + 1));
 			while (true) {
