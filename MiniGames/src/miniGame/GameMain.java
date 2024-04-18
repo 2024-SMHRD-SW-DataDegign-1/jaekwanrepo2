@@ -63,17 +63,7 @@ public class GameMain {
 
 		}
 
-<<<<<<< HEAD
-	// 넌센스 그림퀴즈 
-		 if (num==2) {
-			 
-	
-			 
-			 
-		 }/*아현*/	 
-=======
 
->>>>>>> branch 'master' of https://github.com/2024-SMHRD-SW-DataDegign-1/jaekwanrepo2.git
 	}
 
 }
