@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class image {
 
-	public void printImage() {
+	public void printImage(String path) {
 //		System.out.println("  ╭◜◝ ͡ ◜◝         ╭◜◝ ͡ ◜◝\r\n"
 //				         + " ( •‿•。   ) ☆     ( •‿•。   ) ☆\r\n"
 //				         + "  ╰◟◞ ͜ ◟◞  ╭◜◝ ͡ ◜◝╮   ͜ ◟◞╯\r\n"
@@ -17,7 +17,7 @@ public class image {
 		
 		 try {
 	            // 파일 경로 설정
-	            String filePath = ".\\image\\sample.txt";
+	            String filePath = path;
 	            
 	            // FileReader와 BufferedReader 생성
 	            FileReader fileReader = new FileReader(filePath);

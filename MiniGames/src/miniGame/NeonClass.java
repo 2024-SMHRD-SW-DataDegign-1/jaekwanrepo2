@@ -6,13 +6,13 @@ import java.util.Scanner;
 
 public class NeonClass {
 	Random ran = new Random();
-
-	public void imageGame() {
+	RankDAO rank = new RankDAO();
+	
+	public void imageGame(String id) {
 		Scanner sc = new Scanner(System.in);
 
 		NeonDAO dao = new NeonDAO();
-//		NeonQuestion neon = new NeonQuestion();
-//		NeonImage neonIm = new NeonImage();/* 넌센스 퀴즈 */
+		image neonIm = new image();/* 넌센스 퀴즈 */
 
 		int sum = 0;
 
@@ -27,7 +27,7 @@ public class NeonClass {
 			System.out.println("문제 " + (i + 1));
 			while (true) {
 //				neonIm.neonfile(num.get(i) + 1);/*문제*/
-//				neonIm.neonfile(dao.neonGame().get(num.get(i)).getQ());/* 문제 */
+				neonIm.printImage(dao.neonGame().get(num.get(i)).getQ());/* 문제 */
 				System.out.print("정답을 입력하세요: ");
 				String userAnswer = sc.nextLine();
 				System.out.println();
@@ -58,6 +58,7 @@ public class NeonClass {
 		}
 
 		System.out.println("게임 종료! 최종 점수는 " + sum + "점 입니다.");
+		rank.ranksys(3, id, sum);
 
 	}
 

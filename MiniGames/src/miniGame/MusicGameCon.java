@@ -20,7 +20,7 @@ public class MusicGameCon extends MP3Player {
 		for (int j = 0; j < 5; j++) {
 			int score = 60;
 			for (int i = 1; i <= 3; i++) {
-				im.printImage();
+				im.printImage(".\\image\\sample.txt");
 				play(pathdao.songData().get(ranSong.get(j)).getPath());
 				timeDelay(i * 5);
 				stop();
