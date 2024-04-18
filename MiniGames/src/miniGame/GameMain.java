@@ -13,6 +13,7 @@ public class GameMain {
 		MusicGameCon mp3 = new MusicGameCon();
 		DBDAO dao = new DBDAO();
 		PathDAO pathdao = new PathDAO();
+		DBDTO user = null;
 
 		while (true) {
 			System.out.println("1.로그인 2.회원가입 3.프로그램종료");
@@ -23,14 +24,13 @@ public class GameMain {
 				System.out.print("로그인할 PW 입력 : ");
 				String pw = sc.next();
 				
-				String name = dao.loginUser(id, pw);
-				// name == "" 로그인 실패
-				// name != "" 로그인 성공
-				if (name.equals("")) {
+				user = dao.loginUser(id, pw);
+				
+				if (user.getName().equals("")) {
 					System.out.println("로그인 실패");
 				} else {
 					System.out.println("로그인 성공");
-					System.out.println(name + "님 환영합니다.");
+					System.out.println(user.getName() + "님 환영합니다.");
 					break;
 				}
 			}

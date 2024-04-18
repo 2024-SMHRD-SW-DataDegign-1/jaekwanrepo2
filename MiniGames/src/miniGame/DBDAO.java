@@ -24,12 +24,6 @@ public class DBDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		if(conn!=null) {
-			System.out.println("연결성공");
-		}else {
-			System.out.println("연결성공");
-		}
-		
 
 	}
 
@@ -44,11 +38,6 @@ public class DBDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		if(psmt==null) {
-			System.out.println("반환성공");
-		}else{
-			System.out.println("반환실패");
 		}
 
 	}
@@ -79,11 +68,12 @@ public class DBDAO {
 	}
 
 	// 로그인
-	public String loginUser(String id, String pw) {
+	public DBDTO loginUser(String id, String pw) {
 
 		String sql = "select name from datamember where id = ? and pw = ?";
 		ResultSet rs = null;
-
+		DBDTO user = null;
+		
 		String name = "";
 
 		try {
@@ -95,7 +85,7 @@ public class DBDAO {
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				name = rs.getString(1);
+				user = new DBDTO(id, pw, name);
 			}
 
 		} catch (SQLException e) {
@@ -104,7 +94,7 @@ public class DBDAO {
 			dbClose();
 		}
 
-		return name;
+		return user;
 
 	}
 
