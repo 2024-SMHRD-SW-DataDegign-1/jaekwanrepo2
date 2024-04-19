@@ -45,21 +45,33 @@ public class DBDAO {
 	// 회원가입
 	public int insertUser(String id, String pw, String name) {
 		int row = 0;
+		ResultSet rs = null; //
+		String checkID = null;
 		String sql = "INSERT INTO DATAMEMBER VALUES(?,?,?)";
 		String sql2 = "INSERT INTO RANK VALUES(?,0,0,0,0)";
-
+		String sql3 = "select id from Datamember where id = ?"; //
 		try {
 			conn();
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
-			psmt.setString(2, pw);
-			psmt.setString(3, name);
-			row = psmt.executeUpdate();
-			
-			psmt = conn.prepareStatement(sql2);
-			psmt.setString(1, id);
-			row = psmt.executeUpdate();
-			
+			psmt = conn.prepareStatement(sql3);
+			psmt.setString(1, id); // 물음표에 값을 넣음
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				checkID = rs.getString(1);
+			}
+
+			if (checkID == null) {
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, id);
+				psmt.setString(2, pw);
+				psmt.setString(3, name);
+				row = psmt.executeUpdate();
+
+				psmt = conn.prepareStatement(sql2);
+				psmt.setString(1, id);
+				row = psmt.executeUpdate();
+			}else {
+				System.out.println("아이디가 중복됩니다.");
+			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -78,8 +90,8 @@ public class DBDAO {
 		String sql = "select * from datamember where id = ? and pw = ?";
 		ResultSet rs = null;
 		DBDTO user = null;
-		
-		//String name = "";
+
+		// String name = "";
 
 		try {
 			conn();
