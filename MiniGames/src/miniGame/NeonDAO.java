@@ -48,7 +48,7 @@ public class NeonDAO {
 //		String q= null;
 		String sql = "select * from imagegame ";
 		ResultSet rs = null; 
-		PathDTO dto = null;
+		MusicGameDTO dto = null;
 		ArrayList<NeonDTO> Quizlist = new ArrayList<NeonDTO>();
 
 		try {

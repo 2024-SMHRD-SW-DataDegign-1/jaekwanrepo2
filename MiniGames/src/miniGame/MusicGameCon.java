@@ -10,7 +10,7 @@ public class MusicGameCon extends MP3Player {
 	Scanner sc = new Scanner(System.in);
 	image im = new image();
 	Random ran = new Random();
-	PathDAO pathdao = new PathDAO();
+	MusicGameDAO pathdao = new MusicGameDAO();
 	RankDAO rank = new RankDAO();
 
 	public void playTest(String id) {

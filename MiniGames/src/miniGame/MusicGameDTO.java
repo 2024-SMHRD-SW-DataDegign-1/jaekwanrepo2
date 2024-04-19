@@ -1,13 +1,13 @@
 package miniGame;
 
 
-public class PathDTO {
+public class MusicGameDTO {
 
 	private String path;
 	private String name;
 	private String singer;
 	
-	public PathDTO(String path, String name, String singer) {
+	public MusicGameDTO(String path, String name, String singer) {
 		this.path = path;
 		this.name = name;
 		this.singer = singer;
