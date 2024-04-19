@@ -16,19 +16,19 @@ public class NeonClass {
 
 		int sum = 0;
 
-		System.out.println("사진 퀴즈에 오신 것을 환영합니다!");
-
+		System.out.println("넌센스 그림 퀴즈에 오신 것을 환영합니다!");
+	
 		ArrayList<Integer> num = ranNum(16);
 		
 		
 		
 		for (int i = 0; i < 3; i++) {
 			int score = 30;
-			System.out.println("문제 " + (i + 1));
+			System.out.println("문제 " + (i + 1)+"\t\t\t\t[0]뒤로가기");
 			while (true) {
 //				neonIm.neonfile(num.get(i) + 1);/*문제*/
 				neonIm.printImage(dao.neonGame().get(num.get(i)).getQ());/* 문제 */
-				System.out.print("정답을 입력하세요:  [0]뒤로가기");
+				System.out.print("정답을 입력하세요: ");
 				String userAnswer = sc.nextLine();
 				if(userAnswer.equals("0")) {
 					return;
