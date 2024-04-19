@@ -18,13 +18,13 @@ public class MusicGameCon extends MP3Player {
 		String intro = "음악 맞추기 게임에 오신것을 환영합니다.\r\n" 
 				+ "음악을 일정시간 듣고 노래제목을 맞추는 게임입니다.\r\n" 
 				+ "제목을 맞추지 못하면 듣는 시간이 5초 늘어납니다.\r\n" + "\r\n"
-				+ "그럼게임을 시작합니다!";
+				+ "그럼 게임을 시작합니다!";
 		slowPrint(intro, 50);
 		timeDelay(2);
 
 		ArrayList<Integer> ranSong = ranNum(pathdao.songData().size());
 		int sum = 0;
-		for (int j = 0; j < 5; j++) {
+		for (int j = 0; j < 3; j++) {
 			int score = 60;
 			for (int i = 1; i <= 3; i++) {
 				im.printImage(".\\image\\music.txt");
@@ -46,15 +46,16 @@ public class MusicGameCon extends MP3Player {
 					score -= 20;
 					timeDelay(2);
 				}
-
+				
 			}
+			System.out.println("정답은 ["+pathdao.songData().get(ranSong.get(j)).getName()+"] 입니다. - "
+					+pathdao.songData().get(ranSong.get(j)).getSinger());
 			sum += score;
-			System.out.println(sum);
+			timeDelay(2);
 		}
-		
-		
+		System.out.println("최종획득 점수는 "+sum+"입니다." );
+		timeDelay(2);
 		rank.ranksys(1,id,sum);
-
 	}
 
 	public ArrayList<Integer> ranNum(int max) {

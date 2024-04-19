@@ -98,7 +98,7 @@ public class WordGame {
                 if (hintCount < hintList.size()) {
                     System.out.println("오답입니다. 힌트: \"" + hintList.get(hintCount) + "\"입니다.");
                 } else {
-                    System.out.println("오답입니다. 다음 문제로 넘어갑니다.");
+                    System.out.println("오답입니다. 정답은 "+ word.getRight()+" 입니다. 다음 문제로 넘어갑니다.");
                 }
             }
             hintCount++;

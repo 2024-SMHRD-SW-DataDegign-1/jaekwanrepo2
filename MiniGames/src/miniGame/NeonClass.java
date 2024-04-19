@@ -33,7 +33,7 @@ public class NeonClass {
 			while (true) {
 //				neonIm.neonfile(num.get(i) + 1);/*문제*/
 				neonIm.printImage(dao.neonGame().get(num.get(i)).getQ());/* 문제 */
-				System.out.println("정답을 입력하세요 \t\t[0]뒤로가기\n>>");
+				System.out.print("정답을 입력하세요 \t\t[0]뒤로가기\n>>");
 				String userAnswer = sc.nextLine();
 				if(userAnswer.equals("0")) {
 					return;
@@ -64,6 +64,7 @@ public class NeonClass {
 			}
 			System.out.println("획득점수" + score);
 			System.out.println("--------------------------------------------------------------------------\n\n");
+			timeDelay(2);
 			sum += score;
 
 		}

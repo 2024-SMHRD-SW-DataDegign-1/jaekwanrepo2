@@ -67,6 +67,7 @@ public class GameMain {
 					}
 
 				} else if (num == 6) {
+					user =null;
 					break;
 				} else if (num == 0) {
 					System.exit(0);

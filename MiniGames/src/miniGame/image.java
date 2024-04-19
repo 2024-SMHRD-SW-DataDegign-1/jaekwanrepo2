@@ -7,13 +7,6 @@ import java.io.IOException;
 public class image {
 
 	public void printImage(String path) {
-//		System.out.println("  ╭◜◝ ͡ ◜◝         ╭◜◝ ͡ ◜◝\r\n"
-//				         + " ( •‿•。   ) ☆     ( •‿•。   ) ☆\r\n"
-//				         + "  ╰◟◞ ͜ ◟◞  ╭◜◝ ͡ ◜◝╮   ͜ ◟◞╯\r\n"
-//				         + "           ( •‿•。  ) ☆\r\n"
-//				         + "     　     ╰◟◞ ͜ ◟◞╯\r\n"
-//				         + "         음악재생중~~~~       ");
-//		
 		
 		 try {
 	            // 파일 경로 설정
