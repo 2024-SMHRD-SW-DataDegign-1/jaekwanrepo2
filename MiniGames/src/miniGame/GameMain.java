@@ -47,7 +47,7 @@ public class GameMain {
 
 			} else if (num == 4) {
 				WordGame wordGame = new WordGame();
-	            wordGame.startGame();
+	            wordGame.startGame(user.getId());
 			} else if (num == 5) {
 				RankDAO rank = new RankDAO();
 				System.out.println("[1]노래맞추기 [2]틀린문법찾기 [3]넌센스그림퀴즈 [4]초성퀴즈 [0]뒤로가기");

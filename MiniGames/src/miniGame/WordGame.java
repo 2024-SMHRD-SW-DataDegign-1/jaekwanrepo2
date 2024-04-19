@@ -11,13 +11,14 @@ public class WordGame {
     private Scanner sc = new Scanner(System.in);
     private WordGameDAO dao = new WordGameDAO();
     private List<WordGameDTO> wordList = new ArrayList<>();
+    RankDAO rank = new RankDAO();
 
     public WordGame() {
         // DAO를 통해 데이터베이스에서 단어 정보를 가져옴
         wordList = dao.wordData();
     }
 
-    public void startGame() {
+    public void startGame(String id) {
         System.out.println("========================");
         System.out.println("      초성게임!        ");
         System.out.println("========================");
@@ -28,10 +29,10 @@ public class WordGame {
 
         boolean continueGame = true;
 
+        int totalScore = 0;
         while (continueGame) {
-            int totalScore = 0;
-
-            for (int i = 0; i < 5; i++) {
+        	totalScore = 0;
+            for (int i = 0; i < 3; i++) {
                 totalScore += play();
             }
 
@@ -54,6 +55,7 @@ public class WordGame {
         }
 
         System.out.println("게임을 종료합니다.");
+        rank.ranksys(4,id,totalScore);
     }
 
     public int play() {
