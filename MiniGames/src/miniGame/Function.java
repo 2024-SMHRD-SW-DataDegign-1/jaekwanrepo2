@@ -49,26 +49,5 @@ public class Function {
 			}
 		}
 		
-		public void loadTxt(String filePath) { // 일반 txt파일 출력용
-			try {
-				// 파일 경로 설정 filePath
-				
-				// FileReader와 BufferedReader 생성
-				FileReader fileReader = new FileReader(filePath);
-				BufferedReader bufferedReader = new BufferedReader(fileReader);
-				
-				// 파일 내용 출력
-				String line;
-				int i = 0 ;
-				while ((line = bufferedReader.readLine()) != null) {
-					System.out.println(line); //행 번호 출력 i
-				}
-				
-				// 리소스 정리
-				bufferedReader.close();
-				fileReader.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-	}
+
 }
