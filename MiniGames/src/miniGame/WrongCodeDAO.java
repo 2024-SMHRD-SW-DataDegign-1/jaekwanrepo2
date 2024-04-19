@@ -55,7 +55,7 @@ public class WrongCodeDAO {
 	// 초기값 입력
 	public int insertInit(String id) {
 
-		String sql = "insert into rank(id,codescore) values (?,2400)";
+		String sql = "update rank set codescore = 2400 where id = ?";
 		int row = 0;
 		try {
 			psmt = conn.prepareStatement(sql);

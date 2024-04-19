@@ -6,7 +6,7 @@ public class WrongCodeRun {
 
 	Scanner sc = new Scanner(System.in);
 	Function fx = new Function();
-	int wordSpeed = 1;
+	int wordSpeed = 100;
 	int hint = 2;
 	int streak = 0;
 	int life = 3;

@@ -14,7 +14,7 @@ public class WrongCodeMain extends WrongCodeRun{
 		String intro = "당신은 이클립스의 소중함을 깨닫지 못하고 함부로 코딩을 해온 개발자였습니다.\r\n" + "\r\n"
 				+ "자, 이제 당신은 콘솔창이라는 척박한 환경에서 개발을 해야하는 개발자입니다.\r\n" + "당신은 에러를 잡아내지 못하면 회사에서 짤립니다.\r\n" + "\r\n"
 				+ "이클립스의 도움없이 에러를 잡아내십시오.";
-		fx.slowPrint(intro, 5); // 인트로 한글자씩 천천히 출력
+		fx.slowPrint(intro, 50); // 인트로 한글자씩 천천히 출력
 		String id = user.getId();
 		System.out.print("유저 데이터 조회 중");
 		fx.slowPrint("...", 300);
