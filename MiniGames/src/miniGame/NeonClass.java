@@ -28,8 +28,11 @@ public class NeonClass {
 			while (true) {
 //				neonIm.neonfile(num.get(i) + 1);/*문제*/
 				neonIm.printImage(dao.neonGame().get(num.get(i)).getQ());/* 문제 */
-				System.out.print("정답을 입력하세요: ");
+				System.out.print("정답을 입력하세요:  [0]뒤로가기");
 				String userAnswer = sc.nextLine();
+				if(userAnswer.equals("0")) {
+					return;
+				}
 				System.out.println();
 
 				if (userAnswer.equalsIgnoreCase(dao.neonGame().get(num.get(i)).getA())) {
@@ -47,10 +50,11 @@ public class NeonClass {
 						System.out.println("기회1번남음");
 					} else {
 						System.out.println("죄송합니다. 기회를 모두 사용하셨습니다. 정답은: " + dao.neonGame().get(num.get(i)).getA());
+						timeDelay(2);
 						break;
 					}
 				}
-
+				timeDelay(2);
 			}
 			System.out.println("획득점수" + score);
 			sum += score;
@@ -76,6 +80,14 @@ public class NeonClass {
 		}
 
 		return result;
+	}
+	public void timeDelay(int i) {
+		try {
+			Thread.sleep(i * 1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }
