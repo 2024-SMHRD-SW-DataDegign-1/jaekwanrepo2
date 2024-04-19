@@ -19,21 +19,32 @@ public class WordGame {
     }
 
     public void startGame(String id) {
-        System.out.println("========================");
-        System.out.println("      초성게임!        ");
-        System.out.println("========================");
-        System.out.println("처음 제시되는 초성에서 답을 맞추면 5점! ");
-        System.out.println("첫번째 힌트 후 맞추면 3점!");
-        System.out.println("두번째 힌트 후 맞추면 1점!");
-        System.out.println("두번째 힌트 후에도 맞추지 못하면 0점입니다.");
+      
+    	String intro = "초 성 게 임 !!!!!!\r\n" 
+				+ "주어진 초성을 보고 단어를 유추하여 맞춰주세요!\r\n" 
+				+ "맞추지 못할때마다 힌트가 주어지지만 점수는 줄어듭니다!\r\n" + "\r\n"
+				+ "처음에 맞추면 5점, 첫 힌트 후에는 3점, 두번째 힌트 후에는 1점이고 못맞추면 0점!\r\n"
+    	        + "그럼 게임 START!";
+		slowPrint(intro, 50);
+		timeDelay(2);
+
 
         boolean continueGame = true;
 
         int totalScore = 0;
         while (continueGame) {
-        	totalScore = 0;
+            totalScore = 0;
             for (int i = 0; i < 3; i++) {
-                totalScore += play();
+                int score = play();
+                if (score == 0) {
+                    continueGame = false; // 0을 반환하면 게임을 종료하고 메인 메뉴로 돌아감
+                    break;
+                }
+                totalScore += score;
+            }
+
+            if (!continueGame) {
+                break;
             }
 
             System.out.println("수고하셨습니다. 총점수: " + totalScore);
@@ -55,7 +66,7 @@ public class WordGame {
         }
 
         System.out.println("게임을 종료합니다.");
-        rank.ranksys(4,id,totalScore);
+        rank.ranksys(4, id, totalScore);
     }
 
     public int play() {
@@ -65,15 +76,19 @@ public class WordGame {
         hintList.add(word.getHint1());
         hintList.add(word.getHint2());
 
-        String chosung = word.getFirstWord(); 
+        String chosung = word.getFirstWord();
         System.out.println("========================");
-        System.out.println("다음 단어의 초성을 맞춰보세요: " + chosung);
+        System.out.println("다음 단어의 초성을 맞춰보세요: " + chosung + "\t\t[0]뒤로가기");
 
         int hintCount = 0;
         boolean correctAnswer = false;
-        while (hintCount < hintList.size() + 1) { 
+        while (hintCount < hintList.size() + 1) {
             System.out.print("답을 입력하세요: ");
             String answer = sc.nextLine();
+
+            if (answer.equals("0")) {
+                return 0; // 0을 입력하면 메소드를 종료하고 메인 메뉴로 돌아감
+            }
 
             if (answer.equals(word.getRight())) {
                 System.out.println("정답입니다!");
@@ -89,12 +104,10 @@ public class WordGame {
             hintCount++;
         }
 
-
         wordList.remove(index); // 정답 여부와 상관없이 문제는 제거됨
 
         return getScore(hintCount);
     }
-
 
     private int getScore(int hintCount) {
         if (hintCount == 0) {
@@ -105,13 +118,24 @@ public class WordGame {
             return 1;
         }
     }
-
-    private String getHint(WordGameDTO word, int hintCount) {
-        if (hintCount == 0) {
-            return word.getHint1();
-        } else {
-            return word.getHint2();
+    
+    public void slowPrint(String text, int delay) {
+        for (int i = 0; i < text.length(); i++) {
+            System.out.print(text.charAt(i));
+            try {
+                Thread.sleep(delay); // 지정한 시간만큼 대기
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+        System.out.println(); // 마지막에 개행 출력
+    }
+    
+    public void timeDelay(int i) {
+		try {
+			Thread.sleep(i * 1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
     }
 }
-
