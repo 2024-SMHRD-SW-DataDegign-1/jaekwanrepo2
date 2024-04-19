@@ -13,15 +13,18 @@ public class GameMain {
 		im.printImage(".\\image\\오프닝.txt");
 		
 		while (true) {
-			System.out.println("[1]로그인 [2]회원가입 [3]프로그램종료");
+			System.out.println("--------------------------------------------------------------------------");
+			System.out.println("[1]로그인\t\t\t[2]회원가입\t\t[3]프로그램종료");
+			System.out.println("--------------------------------------------------------------------------");
 			int menu = sc.nextInt();
 			user = con.loginMenu(menu);
 			
 			if(menu==1) {
 				if (user==null) {
-					System.out.println("로그인 실패");
+					System.err.println("로그인 실패");
 				} else {
 					System.out.println("로그인 성공");
+					System.out.println();
 					System.out.println(user.getName() + "님 환영합니다.");
 					break;
 				}
@@ -31,7 +34,9 @@ public class GameMain {
 
 //		String comPath = ".\\player\\";
 		while (true) {
+			System.out.println("--------------------------------------------------------------------------");
 			System.out.println("[1]노래맞추기 [2]틀린문법찾기 [3]넌센스그림퀴즈 [4]초성퀴즈 [5]랭킹보기 [0]게임종료");
+			System.out.println("--------------------------------------------------------------------------");
 			int num = sc.nextInt();
 
 			if (num == 1) {
@@ -50,7 +55,9 @@ public class GameMain {
 	            wordGame.startGame(user.getId());
 			} else if (num == 5) {
 				RankDAO rank = new RankDAO();
+				System.out.println("--------------------------------------------------------------------------");
 				System.out.println("[1]노래맞추기 [2]틀린문법찾기 [3]넌센스그림퀴즈 [4]초성퀴즈 [0]뒤로가기");
+				System.out.println("--------------------------------------------------------------------------");
 				int numR = sc.nextInt();
 				if(numR ==0) {
 					continue;

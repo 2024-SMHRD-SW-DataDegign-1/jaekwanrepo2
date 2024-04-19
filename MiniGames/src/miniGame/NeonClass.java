@@ -19,13 +19,13 @@ public class NeonClass {
 		String intro = "넌센스 그림퀴즈에 오신 걸 환영합니다.\n"
 					  +"당신의 센스를 확인해보세요 문제의 정답을 맞힐 수 있는 기회는 딱 3번 주어집니다.\n"
 					  +"한 문제당 만점은 30점이며 기회가 한번씩 깎일 때마다 힌트가 제공이 되며 점수가 -10점씩 차감됩니다.\n"
-					  +"Let's play~  ";
+					  +"Game Strat~  ";
 		
 		slowPrint(intro, 50);
 		timeDelay(2);
 		
 		ArrayList<Integer> num = ranNum(16);
-		System.out.println("\n\n-------------------------------------------\n\n");
+		System.out.println("\n--------------------------------------------------------------------------\n");
 		
 		for (int i = 0; i < 3; i++) {
 			int score = 30;
@@ -46,6 +46,7 @@ public class NeonClass {
 
 				} else {
 					System.err.println("오답입니다.");
+					System.out.println("\n\n--------------------------------------------------------------------------\n\n");
 					score -= 10;
 					if (score == 20) {
 						System.out.println(dao.neonGame().get(num.get(i)).getHint1());
@@ -62,6 +63,7 @@ public class NeonClass {
 				timeDelay(2);
 			}
 			System.out.println("획득점수" + score);
+			System.out.println("--------------------------------------------------------------------------\n\n");
 			sum += score;
 
 		}
