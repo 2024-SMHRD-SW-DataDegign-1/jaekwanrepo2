@@ -14,6 +14,13 @@ public class MusicGameCon extends MP3Player {
 	RankDAO rank = new RankDAO();
 
 	public void playTest(String id) {
+		
+		String intro = "음악 맞추기 게임에 오신것을 환영합니다.\r\n" 
+				+ "음악을 일정시간 듣고 노래제목을 맞추는 게임입니다.\r\n" 
+				+ "제목을 맞추지 못하면 듣는 시간이 5초 늘어납니다.\r\n" + "\r\n"
+				+ "그럼게임을 시작합니다!";
+		slowPrint(intro, 50);
+		timeDelay(2);
 
 		ArrayList<Integer> ranSong = ranNum(pathdao.songData().size());
 		int sum = 0;
@@ -25,7 +32,7 @@ public class MusicGameCon extends MP3Player {
 				timeDelay(i * 5);
 				stop();
 
-				System.out.print("정답(한글로작성)" + score + "점  [0] 게임종료 ");
+				System.out.print("정답(한글로작성)" + score + "점  [0] 뒤로가기\n>>");
 				String answer = sc.next();
 				if (answer.equals("0")) {
 					return;
@@ -74,7 +81,17 @@ public class MusicGameCon extends MP3Player {
 
 	}
 	
-	
+	public void slowPrint(String text, int delay) {
+        for (int i = 0; i < text.length(); i++) {
+            System.out.print(text.charAt(i));
+            try {
+                Thread.sleep(delay); // 지정한 시간만큼 대기
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println(); // 마지막에 개행 출력
+    }
 	
 	
 

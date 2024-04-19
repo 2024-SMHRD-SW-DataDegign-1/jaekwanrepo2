@@ -1,17 +1,16 @@
 package miniGame;
 
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class GameMain {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		Random ran = new Random();
-		DBDAO dao = new DBDAO();
 		DBDTO user = null;
 		DBCON con = new DBCON();
+		image im = new image();
+		
+		im.printImage(".\\image\\오프닝.txt");
 		
 		while (true) {
 			System.out.println("[1]로그인 [2]회원가입 [3]프로그램종료");
@@ -32,7 +31,7 @@ public class GameMain {
 
 //		String comPath = ".\\player\\";
 		while (true) {
-			System.out.println("[1]노래맞추기 [2]틀린문법찾기 [3]넌센스그림퀴즈 [4]초성퀴즈 [5]랭킹보기 [0]게임종료");
+			System.out.println("[1]노래맞추기 [2]틀린문법찾기 [3]그림맞추기 [4]초성퀴즈 [5]랭킹보기 [0]게임종료");
 			int num = sc.nextInt();
 
 			if (num == 1) {
@@ -50,7 +49,7 @@ public class GameMain {
 
 			} else if (num == 5) {
 				RankDAO rank = new RankDAO();
-				System.out.println("[1]노래맞추기 [2]틀린문법찾기 [3]넌센스그림퀴즈 [4]초성퀴즈 [0]뒤로가기");
+				System.out.println("[1]노래맞추기 [2]틀린문법찾기 [3]그림맞추기 [4]초성퀴즈 [0]뒤로가기");
 				int numR = sc.nextInt();
 				if(numR ==0) {
 					continue;
