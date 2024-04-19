@@ -14,7 +14,7 @@ public class GameMain {
 		DBCON con = new DBCON();
 		
 		while (true) {
-			System.out.println("1.로그인 2.회원가입 3.프로그램종료");
+			System.out.println("[1]로그인 [2]회원가입 [3]프로그램종료");
 			int menu = sc.nextInt();
 			user = con.loginMenu(menu);
 			
@@ -55,7 +55,7 @@ public class GameMain {
 				if(numR ==0) {
 					continue;
 				}else {
-					System.out.println(rank.searchRank(numR));
+					rank.ranksys(numR);
 				}
 				
 

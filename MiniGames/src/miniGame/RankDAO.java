@@ -146,28 +146,55 @@ public class RankDAO {
 		
 		//랭크 출력
 		ArrayList<RankDTO> result = searchRank(num);
+		System.out.println("--------------------------------------------------");
 		if (num == 1) {
 			for (RankDTO i : result) {
-				System.out.println(i.getId() + "\t" + i.getMusicScore());
+				System.out.println("\t"+i.getId() + "\t" + i.getMusicScore());
 			}
 		}
 		else if (num == 2) {
 			for (RankDTO i : result) {
-				System.out.println(i.getId() + "\t" + i.getCodeScore());
+				System.out.println("\t"+i.getId() + "\t" + i.getCodeScore());
 			}
 		}
 		else if (num == 3) {
 			for (RankDTO i : result) {
-				System.out.println(i.getId() + "\t" + i.getImageScore());
+				System.out.println("\t"+i.getId() + "\t" + i.getImageScore());
 			}
 		}
 		else if (num == 4) {
 			for (RankDTO i : result) {
-				System.out.println(i.getId() + "\t" + i.getWordScore());
+				System.out.println("\t"+i.getId() + "\t" + i.getWordScore());
 			}
 		}
 		
 		
 	}
+	
+	public void ranksys(int num) {
+		ArrayList<RankDTO> result = searchRank(num);
+		System.out.println("--------------------------------------------------");
+		if (num == 1) {
+			for (RankDTO i : result) {
+				System.out.println("\t\t"+i.getId() + "\t" + i.getMusicScore());
+			}
+		}
+		else if (num == 2) {
+			for (RankDTO i : result) {
+				System.out.println("\t\t"+i.getId() + "\t" + i.getCodeScore());
+			}
+		}
+		else if (num == 3) {
+			for (RankDTO i : result) {
+				System.out.println("\t\t"+i.getId() + "\t" + i.getImageScore());
+			}
+		}
+		else if (num == 4) {
+			for (RankDTO i : result) {
+				System.out.println("\t\t"+i.getId() + "\t" + i.getWordScore());
+			}
+		}
+	}
+	
 
 }

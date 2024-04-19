@@ -20,13 +20,17 @@ public class MusicGameCon extends MP3Player {
 		for (int j = 0; j < 5; j++) {
 			int score = 60;
 			for (int i = 1; i <= 3; i++) {
-				im.printImage(".\\image\\sample.txt");
+				im.printImage(".\\image\\music.txt");
 				play(pathdao.songData().get(ranSong.get(j)).getPath());
 				timeDelay(i * 5);
 				stop();
 
-				System.out.print("정답(한글로작성)" + score + "점 : ");
-				if (pathdao.songData().get(ranSong.get(j)).getName().equals(sc.next())) {
+				System.out.print("정답(한글로작성)" + score + "점  [0] 게임종료 ");
+				String answer = sc.next();
+				if (answer.equals("0")) {
+					return;
+				}
+				else if (pathdao.songData().get(ranSong.get(j)).getName().equals(answer)) {
 					System.out.println("정답입니다.");
 					timeDelay(2);
 					break;
