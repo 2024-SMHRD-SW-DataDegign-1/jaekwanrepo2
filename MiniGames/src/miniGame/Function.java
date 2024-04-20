@@ -48,6 +48,15 @@ public class Function {
 			e.printStackTrace();
 			}
 		}
+	
+	public void timeDelay(int i) {
+		try {
+			Thread.sleep(i * 500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+	}
 		
 
 }

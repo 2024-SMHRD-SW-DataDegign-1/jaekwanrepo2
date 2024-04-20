@@ -10,7 +10,7 @@ public class WrongCodeMain extends WrongCodeRun{
 	public void wrongCodeMain(DBDTO user) {
 
 		WrongCodeRun wcr = new WrongCodeRun();
-
+		play(".\\sound\\typing.mp3");
 		String intro = "당신은 이클립스의 소중함을 깨닫지 못하고 함부로 코딩을 해온 개발자였습니다.\r\n" + "\r\n"
 				+ "자, 이제 당신은 콘솔창이라는 척박한 환경에서 개발을 해야하는 개발자입니다.\r\n" + "당신은 에러를 잡아내지 못하면 회사에서 짤립니다.\r\n" + "\r\n"
 				+ "이클립스의 도움없이 에러를 잡아내십시오.";
@@ -44,6 +44,7 @@ public class WrongCodeMain extends WrongCodeRun{
 		}
 		// 게임 연봉 초기값을 db에 저장된 값 으로 초기화
 		int salary = wcDAO.checkUser(id);
+		System.out.println("[현재 연봉] : " + salary + "만원");
 		// 난이도 선택
 		while (true) {
 			System.out.println("[1]EASY \t [2]NORMAL \t [3]HARD \t [4]게임 규칙 \t [5]뒤로가기");
@@ -70,8 +71,8 @@ public class WrongCodeMain extends WrongCodeRun{
 				continue;
 			}
 			System.out.println("게임이 종료되었습니다.");
-			if (life != 0 && salary < 2000) {
-				System.out.println("현재 연봉 : " + salary + "만원");
+			if (life != 0 && salary > 2000) {
+				System.out.println("[현재 연봉] : " + salary + "만원");
 			} 
 				
 		}
@@ -82,3 +83,4 @@ public class WrongCodeMain extends WrongCodeRun{
 	}
 
 }
+
