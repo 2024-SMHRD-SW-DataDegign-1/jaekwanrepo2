@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
-public class PathDAO {
+public class MusicGameDAO {
 
 	Connection conn = null;
 	PreparedStatement psmt = null;
@@ -45,11 +45,11 @@ public class PathDAO {
 	}
 
 	// 노래 정보 불러오기
-	public ArrayList<PathDTO> songData() {
+	public ArrayList<MusicGameDTO> songData() {
 		String sql = "select * from song";
 		ResultSet rs = null; 
-		PathDTO dto = null;
-		ArrayList<PathDTO> list = new ArrayList<PathDTO>();
+		MusicGameDTO dto = null;
+		ArrayList<MusicGameDTO> list = new ArrayList<MusicGameDTO>();
 
 		try {
 			conn();
@@ -60,7 +60,7 @@ public class PathDAO {
 				String path = rs.getString(1);
 				String title = rs.getString(2);
 				String singer = rs.getString(3);
-				list.add(new PathDTO(path, title, singer));
+				list.add(new MusicGameDTO(path, title, singer));
 
 			}
 

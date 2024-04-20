@@ -55,7 +55,7 @@ public class WrongCodeDAO {
 	// 초기값 입력
 	public int insertInit(String id) {
 
-		String sql = "insert into userdata(id,salary) values (?,2400)";
+		String sql = "update rank set codescore = 2400 where id = ?";
 		int row = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -63,7 +63,6 @@ public class WrongCodeDAO {
 			row = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println(e);
 		}
 
 		return row;
@@ -72,7 +71,7 @@ public class WrongCodeDAO {
 	public int updateUser(String id, int salary) {
 		int row = 0;
 		try {
-			String sql = "UPDATE userdata SET salary = ? WHERE id = ?";
+			String sql = "UPDATE rank SET codescore = ? WHERE id = ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, salary);
 			psmt.setString(2, id);
@@ -84,26 +83,10 @@ public class WrongCodeDAO {
 
 		return row;
 	}
-	// 유저 풀었던 문제정보 업데이트
-	public int updateData(String id, int questionumber) {
-		int row = 0;
-		try {
-			String sql = "UPDATE userdata SET ox = 'o' WHERE id = ? and questionumber = ?";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
-			psmt.setInt(2, questionumber);
-			
-			row = psmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return row;
-	}
 
 	//select 문 -- 유저 조회
 	public int checkUser(String inputId) {
-		String sql = "select salary from userdata where id = ?";
+		String sql = "select codescore from rank where id = ?";
 		ResultSet rs = null;
 		int salary = 0;
 		try {
@@ -178,35 +161,6 @@ public class WrongCodeDAO {
 		return rrow;
 	}
 		
-	// OX
-		public String checkOx(String id, int questionumber) {
-			String sql = "select ox from userdata where id = ? and questionumber = ?";
-			ResultSet rs = null;
-			String ox = null;
-			try {
-				conn();
-				psmt = conn.prepareStatement(sql);
-				psmt.setString(1, id); // 물음표에 값을 넣음
-				psmt.setInt(2, questionumber); // 물음표에 값을 넣음
-				
-				
-				// executeQuery --> 쿼리문을 통해서 테이블에 있는 데이터에 영향을 끼치지 않을때 사용 되어진다!!
-				rs = psmt.executeQuery();
-				
-				// rs.next() : 다음행으로 커서를 내리고 데이터가 있는지 확인하는 기능
-				if (rs.next()) { // 다음행에서 데이터가 있으면 true 없으면 false
-					// rs.getString(2) : 결과데이터중 2번째 컬럼에 있는 데이터를 문자열로 받아오겠습니다
-					ox = rs.getString(1);
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			if (ox==null) {
-				ox = "x";
-			}
-		
-		return ox;
-	}
+	
 
 }

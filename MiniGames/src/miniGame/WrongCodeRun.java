@@ -6,7 +6,7 @@ public class WrongCodeRun {
 
 	Scanner sc = new Scanner(System.in);
 	Function fx = new Function();
-	int wordSpeed = 50;
+	int wordSpeed = 100;
 	int hint = 2;
 	int streak = 0;
 	int life = 3;
@@ -20,6 +20,10 @@ public class WrongCodeRun {
 	int minus;
 	int indexS;
 	int indexE;
+
+	public int getSalary() {
+		return salary;
+	}
 
 	public void Run(String id, int salary, int sel) {
 		if (sel == 1) {
@@ -42,10 +46,10 @@ public class WrongCodeRun {
 			String filePath = ".\\txt\\" + i + ".txt";
 			System.out.println("===== " + i + "번 문제 =====");
 			fx.loadQuestionTxt(filePath); // 문제 출력
-			int rrow = wrongCodeDAO.checkRrow(i);
-			System.out.println("\n[0번 버튼][힌트보기] : " + hint + "회 남음\t[현재 목숨] : " + life + "\t[현재 연봉] : " + salary + "만원"
-					+ "\t[-1]뒤로가기 버튼");
-			System.out.print("\n 잘못된 행 입력 : ");
+			int rrow = wrongCodeDAO.checkRrow(i); // 정답행 반환
+			System.out.println("\n[0][힌트보기] : " + hint + "회 남음\t[현재 목숨] : " + life + "\t[현재 연봉] : " + salary + "만원"
+					+ "\t[-1]뒤로가기");
+			System.out.print("\n잘못된 행 입력 : ");
 			inputRow = sc.nextInt();
 			if (inputRow == 0) {
 				if (hint > 0) {
@@ -92,6 +96,7 @@ public class WrongCodeRun {
 			}
 
 		}
+		this.salary = salary; // 게임 종료 시 main에 salary값 전달을 위함
 	}
 
 	public void rule() {

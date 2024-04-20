@@ -16,11 +16,16 @@ public class NeonClass {
 
 		int sum = 0;
 
-		System.out.println("사진 퀴즈에 오신 것을 환영합니다!");
-
+		String intro = "넌센스 그림퀴즈에 오신 걸 환영합니다.\n"
+					  +"당신의 센스를 확인해보세요 문제의 정답을 맞힐 수 있는 기회는 딱 3번 주어집니다.\n"
+					  +"한 문제당 만점은 30점이며 기회가 한번씩 깎일 때마다 힌트가 제공이 되며 점수가 -10점씩 차감됩니다.\n"
+					  +"Game Strat~  ";
+		
+		slowPrint(intro, 50);
+		timeDelay(2);
+		
 		ArrayList<Integer> num = ranNum(16);
-		
-		
+		System.out.println("\n--------------------------------------------------------------------------\n");
 		
 		for (int i = 0; i < 3; i++) {
 			int score = 30;
@@ -28,8 +33,11 @@ public class NeonClass {
 			while (true) {
 //				neonIm.neonfile(num.get(i) + 1);/*문제*/
 				neonIm.printImage(dao.neonGame().get(num.get(i)).getQ());/* 문제 */
-				System.out.print("정답을 입력하세요: ");
+				System.out.print("정답을 입력하세요 \t\t[0]뒤로가기\n>>");
 				String userAnswer = sc.nextLine();
+				if(userAnswer.equals("0")) {
+					return;
+				}
 				System.out.println();
 
 				if (userAnswer.equalsIgnoreCase(dao.neonGame().get(num.get(i)).getA())) {
@@ -38,6 +46,7 @@ public class NeonClass {
 
 				} else {
 					System.err.println("오답입니다.");
+					System.out.println("\n\n--------------------------------------------------------------------------\n\n");
 					score -= 10;
 					if (score == 20) {
 						System.out.println(dao.neonGame().get(num.get(i)).getHint1());
@@ -47,12 +56,15 @@ public class NeonClass {
 						System.out.println("기회1번남음");
 					} else {
 						System.out.println("죄송합니다. 기회를 모두 사용하셨습니다. 정답은: " + dao.neonGame().get(num.get(i)).getA());
+						timeDelay(2);
 						break;
 					}
 				}
-
+				timeDelay(2);
 			}
 			System.out.println("획득점수" + score);
+			System.out.println("--------------------------------------------------------------------------\n\n");
+			timeDelay(2);
 			sum += score;
 
 		}
@@ -77,5 +89,25 @@ public class NeonClass {
 
 		return result;
 	}
+	public void timeDelay(int i) {
+		try {
+			Thread.sleep(i * 1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+	}
+	public void slowPrint(String text, int delay) {
+        for (int i = 0; i < text.length(); i++) {
+            System.out.print(text.charAt(i));
+            try {
+                Thread.sleep(delay); // 지정한 시간만큼 대기
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println(); // 마지막에 개행 출력
+    }
+	
 
 }

@@ -47,22 +47,19 @@ public class RankDAO {
 	public void rank(int gameNum, String id, int preScore) {
 		String sql = "";
 		String sql2 = "";
-		if(gameNum==1) {
-		sql = "select songscore from rank where id = ?";
-		sql2 = "UPDATE rank SET songscore = ? WHERE ID = ?";
-		}
-		else if(gameNum==2) {
+		if (gameNum == 1) {
+			sql = "select songscore from rank where id = ?";
+			sql2 = "UPDATE rank SET songscore = ? WHERE ID = ?";
+		} else if (gameNum == 2) {
 			sql = "select codescore from rank where id = ?";
 			sql2 = "UPDATE rank SET codescore = ? WHERE ID = ?";
-		}
-		else if(gameNum==3) {
+		} else if (gameNum == 3) {
 			sql = "select imagecore from rank where id = ?";
 			sql2 = "UPDATE rank SET imagecore = ? WHERE ID = ?";
-		}
-		else if(gameNum==4) {
+		} else if (gameNum == 4) {
 			sql = "select wordscore from rank where id = ?";
 			sql2 = "UPDATE rank SET wordscore = ? WHERE ID = ?";
-		}else {
+		} else {
 			System.out.println("게임종류를 찾을수 없다");
 			System.exit(0);
 		}
@@ -99,16 +96,13 @@ public class RankDAO {
 	public ArrayList<RankDTO> searchRank(int gameNum) {
 		ArrayList<RankDTO> rank = new ArrayList<RankDTO>();
 		String sql = "";
-		if(gameNum == 1) {
+		if (gameNum == 1) {
 			sql = "select * from rank order by songscore desc";
-		}
-		else if(gameNum == 2) {
+		} else if (gameNum == 2) {
 			sql = "select * from rank order by codescore desc";
-		}
-		else if(gameNum == 3) {
+		} else if (gameNum == 3) {
 			sql = "select * from rank order by imagecore desc";
-		}
-		else if(gameNum == 4) {
+		} else if (gameNum == 4) {
 			sql = "select * from rank order by wordscore desc";
 		}
 		ResultSet rs = null;
@@ -116,8 +110,8 @@ public class RankDAO {
 		try {
 			conn();
 			psmt = conn.prepareStatement(sql);
-			//psmt.setString(1, gameName);
-			//psmt.setString(2, gameName);
+			// psmt.setString(1, gameName);
+			// psmt.setString(2, gameName);
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
@@ -126,7 +120,7 @@ public class RankDAO {
 				int codeScore = rs.getInt(3);
 				int imageScore = rs.getInt(4);
 				int wordScore = rs.getInt(5);
-				rank.add(new RankDTO(id,musicScore,codeScore,imageScore,wordScore));
+				rank.add(new RankDTO(id, musicScore, codeScore, imageScore, wordScore));
 
 			}
 
@@ -138,36 +132,100 @@ public class RankDAO {
 
 		return rank;
 	}
-	
-	
-	public void ranksys(int num,String id,int sum) {
-		//랭크 입력
+
+	public void ranksys(int num, String id, int sum) {
+		// 랭크 입력
 		rank(num, id, sum);
-		
-		//랭크 출력
+
+		// 랭크 출력
 		ArrayList<RankDTO> result = searchRank(num);
-		if (num == 1) {
-			for (RankDTO i : result) {
-				System.out.println(i.getId() + "\t" + i.getMusicScore());
+		System.out.println("--------------------------------------------------");
+		System.out.println("\t\tID\t점수");
+		if (result.size() < 5) {
+			int a=1;
+			if (num == 1) {
+				for (RankDTO i : result) {
+					System.out.println("\t" +a++ + "위\t" + i.getId() + "\t" + i.getMusicScore());
+				}
+			} else if (num == 2) {
+				for (RankDTO i : result) {
+					System.out.println("\t" +a++ + "위\t" + i.getId() + "\t" + i.getCodeScore());
+				}
+			} else if (num == 3) {
+				for (RankDTO i : result) {
+					System.out.println("\t" +a++ + "위\t" + i.getId() + "\t" + i.getImageScore());
+				}
+			} else if (num == 4) {
+				for (RankDTO i : result) {
+					System.out.println("\t" +a++ + "위\t" + i.getId() + "\t" + i.getWordScore());
+				}
 			}
-		}
-		else if (num == 2) {
-			for (RankDTO i : result) {
-				System.out.println(i.getId() + "\t" + i.getCodeScore());
+		} else {
+			if (num == 1) {
+				for (int i = 0; i < 5; i++) {
+					System.out.println("\t" + i + 1 + "위\t" + result.get(i).getId() + "\t" + result.get(i).getMusicScore());
+				}
+			} else if (num == 2) {
+				for (int i = 0; i < 5; i++) {
+					System.out.println("\t" + i + 1 + "위\t" + result.get(i).getId() + "\t" + result.get(i).getCodeScore());
+				}
+			} else if (num == 3) {
+				for (int i = 0; i < 5; i++) {
+					System.out.println("\t" + i + 1 + "위\t" + result.get(i).getId() + "\t" + result.get(i).getImageScore());
+				}
+			} else if (num == 4) {
+				for (int i = 0; i < 5; i++) {
+					System.out.println("\t" + i + 1 + "위\t" + result.get(i).getId() + "\t" + result.get(i).getWordScore());
+				}
 			}
+
 		}
-		else if (num == 3) {
-			for (RankDTO i : result) {
-				System.out.println(i.getId() + "\t" + i.getImageScore());
+
+	}
+
+	public void ranksys(int num) {
+		ArrayList<RankDTO> result = searchRank(num);
+		System.out.println("--------------------------------------------------");
+		System.out.println("\t\tID\t점수");
+		if (result.size() < 5) {
+			int a=1;
+			if (num == 1) {
+				for (RankDTO i : result) {
+					System.out.println("\t" +a++ + "위\t" + i.getId() + "\t" + i.getMusicScore());
+				}
+			} else if (num == 2) {
+				for (RankDTO i : result) {
+					System.out.println("\t" +a++ + "위\t" + i.getId() + "\t" + i.getCodeScore());
+				}
+			} else if (num == 3) {
+				for (RankDTO i : result) {
+					System.out.println("\t" +a++ + "위\t" + i.getId() + "\t" + i.getImageScore());
+				}
+			} else if (num == 4) {
+				for (RankDTO i : result) {
+					System.out.println("\t" +a++ + "위\t" + i.getId() + "\t" + i.getWordScore());
+				}
 			}
-		}
-		else if (num == 4) {
-			for (RankDTO i : result) {
-				System.out.println(i.getId() + "\t" + i.getWordScore());
+		} else {
+			if (num == 1) {
+				for (int i = 0; i < 5; i++) {
+					System.out.println("\t" + i + 1 + "위\t" + result.get(i).getId() + "\t" + result.get(i).getMusicScore());
+				}
+			} else if (num == 2) {
+				for (int i = 0; i < 5; i++) {
+					System.out.println("\t" + i + 1 + "위\t" + result.get(i).getId() + "\t" + result.get(i).getCodeScore());
+				}
+			} else if (num == 3) {
+				for (int i = 0; i < 5; i++) {
+					System.out.println("\t" + i + 1 + "위\t" + result.get(i).getId() + "\t" + result.get(i).getImageScore());
+				}
+			} else if (num == 4) {
+				for (int i = 0; i < 5; i++) {
+					System.out.println("\t" + i + 1 + "위\t" + result.get(i).getId() + "\t" + result.get(i).getWordScore());
+				}
 			}
+
 		}
-		
-		
 	}
 
 }
