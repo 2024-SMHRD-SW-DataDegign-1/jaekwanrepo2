@@ -70,6 +70,7 @@ public class GameMain {
 					user =null;
 					break;
 				} else if (num == 0) {
+					System.out.println("게임을 종료합니다.");
 					System.exit(0);
 				}
 
