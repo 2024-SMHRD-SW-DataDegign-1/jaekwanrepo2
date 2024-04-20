@@ -44,6 +44,7 @@ public class WrongCodeMain extends WrongCodeRun{
 		}
 		// 게임 연봉 초기값을 db에 저장된 값 으로 초기화
 		int salary = wcDAO.checkUser(id);
+		System.out.println("[현재 연봉] : " + salary + "만원");
 		// 난이도 선택
 		while (true) {
 			System.out.println("[1]EASY \t [2]NORMAL \t [3]HARD \t [4]게임 규칙 \t [5]뒤로가기");
@@ -70,8 +71,8 @@ public class WrongCodeMain extends WrongCodeRun{
 				continue;
 			}
 			System.out.println("게임이 종료되었습니다.");
-			if (life != 0 && salary < 2000) {
-				System.out.println("현재 연봉 : " + salary + "만원");
+			if (life != 0 && salary > 2000) {
+				System.out.println("[현재 연봉] : " + salary + "만원");
 			} 
 				
 		}
