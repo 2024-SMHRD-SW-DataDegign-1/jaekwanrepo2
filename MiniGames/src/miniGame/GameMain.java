@@ -17,6 +17,7 @@ public class GameMain {
 		while (true) {
 			System.out.println("1.로그인 2.회원가입 3.프로그램종료");
 			int menu = sc.nextInt();
+			
 			if (menu == 1) {
 				System.out.print("로그인할 ID 입력 : ");
 				String id = sc.next();
