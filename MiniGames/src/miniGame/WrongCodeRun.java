@@ -2,11 +2,13 @@ package miniGame;
 
 import java.util.Scanner;
 
-public class WrongCodeRun {
+import javazoom.jl.player.MP3Player;
+
+public class WrongCodeRun extends MP3Player {
 
 	Scanner sc = new Scanner(System.in);
 	Function fx = new Function();
-	int wordSpeed = 100;
+	int wordSpeed = 50;
 	int hint = 2;
 	int streak = 0;
 	int life = 3;
@@ -44,13 +46,21 @@ public class WrongCodeRun {
 		}
 		for (int i = indexS; i <= indexE; i++) {
 			String filePath = ".\\txt\\" + i + ".txt";
-			System.out.println("===== " + i + "번 문제 =====");
+			System.out.println("=============== " + i + "번 문제 ===============");
 			fx.loadQuestionTxt(filePath); // 문제 출력
 			int rrow = wrongCodeDAO.checkRrow(i); // 정답행 반환
 			System.out.println("\n[0][힌트보기] : " + hint + "회 남음\t[현재 목숨] : " + life + "\t[현재 연봉] : " + salary + "만원"
 					+ "\t[-1]뒤로가기");
-			System.out.print("\n잘못된 행 입력 : ");
-			inputRow = sc.nextInt();
+			while (true) {
+				try {
+					System.out.print("\n잘못된 행 입력 : ");
+					inputRow = sc.nextInt();
+					break;
+				} catch (java.util.InputMismatchException e) {
+					System.out.println("숫자를 입력해 주세요.");
+					sc.next();
+				}
+			}
 			if (inputRow == 0) {
 				if (hint > 0) {
 					System.out.println("힌트 : " + rrow + "행");
@@ -72,7 +82,6 @@ public class WrongCodeRun {
 			if (code.equals(wrongCodeDAO.checkAnswer(i))) {
 				fx.slowPrint("성공적으로 처리했습니다! \n[연봉] +" + plus + "만원!!", wordSpeed);
 				salary += plus;
-				// 맞춘 문제는 userdata에 기록함 update userdata set questionumber = i , ox = o)
 				if (++streak == 2) {
 					++hint;
 					streak = 0;
@@ -81,13 +90,18 @@ public class WrongCodeRun {
 				}
 
 			} else {
-				fx.slowPrint("정답이 아닙니다. [연봉] -" + minus + "만원" + "\t 현재 목숨 : " + --life, wordSpeed);
+				fx.slowPrint("정답이 아닙니다. [연봉] -" + minus + "만원" + "\t [현재 목숨] : " + --life, wordSpeed);
 				salary -= minus;
 				streak = 0;
 			}
 			if (life == 0 || salary < 0) {
+				play(".\\sound\\fire.mp3");
 				fx.slowPrint("해고되셨습니다. 다시 스마트인재개발원으로 돌아갑니다.", wordSpeed); // 해고.mp3
-				fx.slowPrint("예진쌤 : 자, 이게 클릭이야", 150); // 무한도전.mp3
+				fx.timeDelay(3);				
+				play(".\\sound\\click.mp3");
+				fx.slowPrint("예진쌤 : 자, 이게 클릭이야", wordSpeed); // 무한도전.mp3
+				fx.timeDelay(3);
+				
 				// 게임오버 시 연봉초기화
 				salary = 2400;
 				life = 3;

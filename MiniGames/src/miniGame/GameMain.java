@@ -19,7 +19,7 @@ public class GameMain {
 				System.out.println("--------------------------------------------------------------------------");
 				int menu = sc.nextInt();
 				user = con.loginMenu(menu);
-
+ 
 				if (menu == 1) {
 					if (user == null) {
 						System.err.println("로그인 실패");
@@ -36,7 +36,7 @@ public class GameMain {
 //		String comPath = ".\\player\\";
 			while (true) {
 				System.out.println("--------------------------------------------------------------------------");
-				System.out.println("[1]노래맞추기 [2]틀린문법찾기 [3]넌센스그림퀴즈 [4]초성퀴즈 [5]랭킹보기 [6]로그아웃 [0]게임종료");
+				System.out.println("[1]노래맞추기 [2]틀린코드찾기 [3]넌센스그림퀴즈 [4]초성퀴즈 [5]랭킹보기 [6]로그아웃 [0]게임종료");
 				System.out.println("--------------------------------------------------------------------------");
 				int num = sc.nextInt();
 
