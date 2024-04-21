@@ -42,8 +42,8 @@ public class DBCON {
 			while (true) {
 				System.out.print("이름 입력 : ");
 				name = sc.next();
-				if (name.length() > 5) {
-					System.out.println("이름은 5글자 이하로 입력해주세요.");
+				if (name.length() < 2 || name.length() > 5) {
+					System.out.println("이름은 2글자 이상 5글자 이하로 입력해주세요.");
 					continue;
 				}
 				break;
