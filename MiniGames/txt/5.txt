@@ -1,5 +1,5 @@
 Scanner sc = new Scanner(System.in);		
-System.out.print("정수입력 : ");
+System.out.print("insert integer : ");
 int num = sc.next();
-System.out.println("결과 값 : " + (num/100*100));
-System.out.println("결과 값 : " + (num-(num%100)));
+System.out.println("result : " + (num/100*100));
+System.out.println("result : " + (num-(num%100)));

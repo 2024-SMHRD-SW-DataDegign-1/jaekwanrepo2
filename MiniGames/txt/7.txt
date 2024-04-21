@@ -7,7 +7,7 @@ System.out.println(a);
 System.out.println(a);
 
 *
-=========== 실행 결과 ==========
+=========== Execution Result ==========
 1782
 8210
 5532

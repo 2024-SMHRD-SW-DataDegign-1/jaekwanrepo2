@@ -6,7 +6,7 @@ System.out.println(--num);
 System.out.println(--num);
 
 *
-=========== 실행 결과 ==========
+=========== Execution Result ==========
 10
 11
 11
