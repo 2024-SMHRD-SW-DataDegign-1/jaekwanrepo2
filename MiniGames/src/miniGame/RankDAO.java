@@ -163,19 +163,19 @@ public class RankDAO {
 		} else {
 			if (num == 1) {
 				for (int i = 0; i < 5; i++) {
-					System.out.println("\t" + i + 1 + "위\t" + result.get(i).getId() + "\t" + result.get(i).getMusicScore());
+					System.out.println("\t" + (i + 1) + "위\t" + result.get(i).getId() + "\t" + result.get(i).getMusicScore());
 				}
 			} else if (num == 2) {
 				for (int i = 0; i < 5; i++) {
-					System.out.println("\t" + i + 1 + "위\t" + result.get(i).getId() + "\t" + result.get(i).getCodeScore());
+					System.out.println("\t" + (i + 1) + "위\t" + result.get(i).getId() + "\t" + result.get(i).getCodeScore());
 				}
 			} else if (num == 3) {
 				for (int i = 0; i < 5; i++) {
-					System.out.println("\t" + i + 1 + "위\t" + result.get(i).getId() + "\t" + result.get(i).getImageScore());
+					System.out.println("\t" + (i + 1) + "위\t" + result.get(i).getId() + "\t" + result.get(i).getImageScore());
 				}
 			} else if (num == 4) {
 				for (int i = 0; i < 5; i++) {
-					System.out.println("\t" + i + 1 + "위\t" + result.get(i).getId() + "\t" + result.get(i).getWordScore());
+					System.out.println("\t" + (i + 1) + "위\t" + result.get(i).getId() + "\t" + result.get(i).getWordScore());
 				}
 			}
 
@@ -209,19 +209,19 @@ public class RankDAO {
 		} else {
 			if (num == 1) {
 				for (int i = 0; i < 5; i++) {
-					System.out.println("\t" + i + 1 + "위\t" + result.get(i).getId() + "\t" + result.get(i).getMusicScore());
+					System.out.println("\t" + (i + 1) + "위\t" + result.get(i).getId() + "\t" + result.get(i).getMusicScore());
 				}
 			} else if (num == 2) {
 				for (int i = 0; i < 5; i++) {
-					System.out.println("\t" + i + 1 + "위\t" + result.get(i).getId() + "\t" + result.get(i).getCodeScore());
+					System.out.println("\t" + (i + 1) + "위\t" + result.get(i).getId() + "\t" + result.get(i).getCodeScore());
 				}
 			} else if (num == 3) {
 				for (int i = 0; i < 5; i++) {
-					System.out.println("\t" + i + 1 + "위\t" + result.get(i).getId() + "\t" + result.get(i).getImageScore());
+					System.out.println("\t" + (i + 1) + "위\t" + result.get(i).getId() + "\t" + result.get(i).getImageScore());
 				}
 			} else if (num == 4) {
 				for (int i = 0; i < 5; i++) {
-					System.out.println("\t" + i + 1 + "위\t" + result.get(i).getId() + "\t" + result.get(i).getWordScore());
+					System.out.println("\t" + (i + 1) + "위\t" + result.get(i).getId() + "\t" + result.get(i).getWordScore());
 				}
 			}
 
