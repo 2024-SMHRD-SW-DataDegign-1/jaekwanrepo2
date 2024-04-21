@@ -1,0 +1,13 @@
+int num = 10;
+		
+System.out.println(num);
+System.out.println(++num);
+System.out.println(--num);
+System.out.println(--num);
+
+*
+=========== 실행 결과 ==========
+10
+11
+11
+9
